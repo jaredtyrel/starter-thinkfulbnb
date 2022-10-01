@@ -31,7 +31,7 @@ section.alternate-background {
 }
 
 main img {
-  width: 100%;
+  width: 100px;
 }
 
 /* ---  Groups & Items --- */
@@ -43,7 +43,7 @@ main img {
 
 .item {
   flex: 1;
-  margin:10px;
+  margin: 10px;
 }
 
 .item-double {
@@ -54,23 +54,25 @@ main img {
 
 header {
   background-color: #ff385c;
-  padding: 20px 20px 20px 20px;
+  padding: 20px 20px 0 20px;
   text-align: center;
+}
+
+header nav {
+  display: flex;
+  justify-content: center;
 }
 
 .logo {
   font-family: "Pangolin", cursive;
-  font-size: 60px;
+  font-size: 35px; /* revision: fixed logo in mobile mode so that it isn't big enough to break the screen with a white line */
   color: #fff;
 }
 
 header nav ul {
   display: flex;
-  justify-content: center;
-}
-
-header nav ul li {
-  list-style-type: none;
+  padding-left: 0;
+  list-style: none;
 }
 
 header nav ul li a {
@@ -80,7 +82,7 @@ header nav ul li a {
 }
 
 header nav ul li:last-child a {
-  margin-right: 20px;
+  margin-right: 0;
 }
 
 header nav ul li a:hover {
@@ -90,31 +92,19 @@ header nav ul li a:hover {
 
 /* -------  Search Form ------- */
 form {
-  display: flex;
-  flex-direction: column;
-  justify-content:baseline;
   border: 2px solid #ff385c;
   padding: 10px;
 }
 
 form label {
   font-weight: bold;
-  display: flex;
-  flex-direction: row;
-  justify-content:left;
-}
-
-form div {
-  display: flex;
-  justify-content: space-between;
 }
 
 form select,
 form input {
-  width: 180px;
   margin-bottom: 20px;
+  width: 180px;
 }
-
 
 form button {
   background-color: #ff385c;
@@ -123,6 +113,24 @@ form button {
   font-size: 24px;
   padding: 15px;
   width: 100%;
+}
+
+.search {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* ---------------------------- About ---------------------------- */
+
+#about {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+section img {
+  width: 100%;
+  margin-bottom: 15px;
 }
 
 /* -------  Footer ------- */
@@ -138,60 +146,77 @@ footer p {
 }
 
 /* -------  Media Query ------- */
-
-@media all and (min-width: 480px) {
+@media only screen and (min-width: 480px) {
   header {
-    background-color: #ff385c;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-content: center;
   }
-
-  header nav {
-    padding: 10px;
+  .logo {
+    font-size: 45px; /* revision: fixed logo sizing to prevent screen from breaking */
   }
-
+  #menu {
+    padding-bottom: 12px;
+  }
   form {
-    align-items: center;
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+  }
+  #desktop {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .search {
+    display: flex;
+    flex-direction: column;
+    width: 15%; /* revision: shrunk width for better spacing */
+    padding-right: 8px; /* revision: fixed padding to prevent nav from creating white line at 500px */
+  }
+
+  .btn {
+    display: flex;
+    align-content: center;
     justify-content: center;
+    width: 15%; /* revision: shrunk width for better spacing */
+  }
+
+  form select,
+  form input {
+    width: 100%; /* revision: added width to form's input sections so that they only fill 100% of the .search div's space (15% of our entire div) which supports better alignment */
+  }
+
+  form button {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    font-size: 20px;
+    padding-top: 20px;
   }
 
   .group {
     display: flex;
     flex-direction: row;
-    justify-content: center;
-    flex-flow: row nowrap;
-    align-items: center;
+  }
+  .item {
+    flex: 1;
+    margin: 10;
   }
 
-  .vacation-form .item {
-    display: flex block;
-    flex: 1 1 auto;
+  .item-double {
+    flex: 2;
+    text-align: left;
+  }
+
+  .item-text {
+    display: flex;
     flex-direction: column;
-  }
-
-  .item label
-  , .item input 
-  , .item select 
-  , .item button{
-    display: flex;
-    width: 100%;
-    flex-wrap: wrap;
-  }
-
-  .grid-column {
-    display: flex;
-    flex: 1;
-    flex-direction: column; 
-    margin: 10px;
-  }
-
-  .grid-row {
-    display: flex;
-    flex: 1;
-    flex-direction: row;
+    align-items: center;
+    justify-content: center;
   }
 }
